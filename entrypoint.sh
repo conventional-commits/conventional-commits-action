@@ -2,4 +2,6 @@
 
 set -e
 
+ls
+git status
 sh -c "echo $*"

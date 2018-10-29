@@ -9,7 +9,14 @@ LABEL com.github.actions.name="GitHub Action for Conventional Commits"
 LABEL com.github.actions.description="Automatically tag releases and generate a CHANGELOG, based on the Conventional Commits spec."
 LABEL com.github.actions.icon="checklist"
 LABEL com.github.actions.color="yellow"
-COPY LICENSE README.md THIRD_PARTY_NOTICE.md /
+
+RUN apk update && \
+    apk upgrade && \
+    apk add git
+
+RUN rm -rf /var/cache/apk/*
+
+COPY LICENSE README.md /
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
