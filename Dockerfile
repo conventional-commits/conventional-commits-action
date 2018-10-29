@@ -14,7 +14,7 @@ RUN apk update && \
     apk upgrade && \
     apk --no-cache add git
 
-COPY LICENSE README.md /
+COPY LICENSE.txt README.md /
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
