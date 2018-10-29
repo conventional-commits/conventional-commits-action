@@ -10,9 +10,9 @@ LABEL com.github.actions.description="Automatically tag releases and generate a 
 LABEL com.github.actions.icon="checklist"
 LABEL com.github.actions.color="yellow"
 
-RUN apk update --no-cache && \
+RUN apk update && \
     apk upgrade && \
-    apk add git
+    apk --no-cache add git
 
 COPY LICENSE README.md /
 
