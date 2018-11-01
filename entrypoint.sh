@@ -2,7 +2,5 @@
 
 set -e
 
-env
-ls
-git status
-sh -c "echo $*"
+npm i standard-version -g
+standard-version
