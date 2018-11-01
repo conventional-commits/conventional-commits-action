@@ -3,4 +3,4 @@
 set -e
 
 npm i standard-version -g
-standard-version
+sh -c "standard-version"
