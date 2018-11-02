@@ -39,7 +39,7 @@ action "Docker Login" {
 
 action "Version" {
   needs = ["Publish Filter"]
-  uses = "bcoe/conventional-commits-action"
+  uses = "docker://bcoe/conventional-commits:76ec988"
 }
 
 action "Docker Publish" {
