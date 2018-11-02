@@ -12,10 +12,23 @@ LABEL com.github.actions.color="yellow"
 
 RUN apk update && \
     apk upgrade && \
-    apk --no-cache add git
+    apk add --no-cache \
+    git \
+    bash \
+    go \
+    libc-dev
 
-COPY LICENSE.txt README.md /
+RUN mkdir /tmp/hub
+RUN ["/bin/bash", "-c", "set -o pipefail \
+    && git clone https://github.com/github/hub.git /tmp/hub \
+    && cd /tmp/hub \
+    && git fetch --tags \
+    && git checkout v2.2.9 \
+    && ./script/build" ]
 
+RUN mv /tmp/hub/bin/hub /usr/bin/hub
+COPY LICENSE.txt /LICENSE.txt
+COPY README.md /README.md
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["help"]

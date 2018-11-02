@@ -3,7 +3,9 @@
 set -e
 
 npm i standard-version@next -g
-sh -c "env"
+git config --global user.email "${GITHUB_EMAIL}"
+git config --global user.name "${GITHUB_ACTOR}"
+sh -c "alias git=hub"
 sh -c "standard-version"
+git push orign master
 git push --tags
-git push origin master
