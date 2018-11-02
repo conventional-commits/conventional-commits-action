@@ -2,7 +2,7 @@
 
 set -e
 
-npm i standard-version
-ls
-echo "got here"
-sh -c "./node_modules/.bin/standard-version"
+npm i standard-version@next -g
+sh -c "standard-version"
+git push --tags
+git push origin master
