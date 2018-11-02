@@ -37,13 +37,8 @@ action "Docker Login" {
   secrets = ["DOCKER_USERNAME", "DOCKER_PASSWORD"]
 }
 
-action "Version" {
-  needs = ["Publish Filter"]
-  uses = "docker://bcoe/conventional-commits:76ec988"
-}
-
 action "Docker Publish" {
-  needs = ["Version", "Docker Tag", "Docker Login"]
+  needs = ["Docker Tag", "Docker Login"]
   uses = "actions/docker/cli@master"
   args = "push bcoe/conventional-commits"
 }
