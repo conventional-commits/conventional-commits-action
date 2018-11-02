@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:8-alpine
 
 LABEL version="0.0.1"
 LABEL repository="http://github.com/bcoe/conventional-commits-action"
